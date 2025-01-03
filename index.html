@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Pet Project</title>
+    <link rel="stylesheet" href="styles/base/base.css">
+    <link rel="stylesheet" href="styles/components/header.css">
+    <link rel="stylesheet" href="styles/components/nav.css">
+    <link rel="stylesheet" href="styles/components/main.css">
+    <link rel="stylesheet" href="styles/components/author.css">
+    <link rel="stylesheet" href="styles/components/form.css">
+    <link rel="stylesheet" href="styles/components/footer.css">
+    <link rel="stylesheet" href="styles/components/table.css">
+    <link rel="stylesheet" href="styles/layout/layout.css">
+    <link rel="stylesheet" href="styles/responsive/responsive.css">
+</head>
+<body>
+    <header>
+        <nav aria-label="Main Navigation">
+            <ul>
+                <li><a href="#home" aria-label="Go to Home">Home</a></li>
+                <li><a href="#about" aria-label="Go to About Me">About Me</a></li>
+                <li><a href="#contact" aria-label="Go to Contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h1>Welcome to My Website!</h1>
+            <p>This is my pet project that I created to demonstrate my skills.</p>
+        </section>
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="author">
+                <img src="author.jpg" alt="Author Photo">
+                <p>I am an aspiring web developer looking to improve my skills and find a job in this field.</p>
+            </div>
+        </section>
+        <section id="contact">
+            <h2>Contact</h2>
+            <form id="contact-form" method="post" action="http://localhost:3000/submit">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+        <section id="submissions">
+            <h2>Submissions</h2>
+            <table id="submissions-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>API</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Message</th>
+                        <th>Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Submissions will be inserted here -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 My Pet Project</p>
+    </footer>
+    <script src="scripts/scripts.js"></script>
+</body>
+</html>

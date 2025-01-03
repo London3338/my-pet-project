@@ -1,0 +1,17 @@
+/* Author Section */
+.author {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.author img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.author p {
+    flex: 1;
+}
