@@ -26,7 +26,7 @@ db.serialize(() => {
     db.run("CREATE TABLE IF NOT EXISTS submissions (id INTEGER PRIMARY KEY, api TEXT, name TEXT, email TEXT, message TEXT, timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)");
 });
 
-app.post('/submit', (req, res) => {
+app.post('/api/submit', (req, res) => {
     const { name, email, message } = req.body;
     const api = req.body.api || 'N/A';
 
@@ -56,7 +56,7 @@ app.post('/submit', (req, res) => {
     });
 });
 
-app.get('/submissions', (req, res) => {
+app.get('/api/submissions', (req, res) => {
     db.all("SELECT id, api, name, email, message, timestamp FROM submissions", [], (err, rows) => {
         if (err) {
             return res.status(500).send('Error retrieving submissions');
