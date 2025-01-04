@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const message = document.getElementById('message').value;
 
         try {
-            const response = await fetch('/api/submit', {
+            const response = await fetch('http://localhost:3000/submit', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function fetchSubmissions() {
         try {
-            const response = await fetch('/api/submissions');
+            const response = await fetch('http://localhost:3000/submissions');
             const submissions = await response.json();
             displaySubmissions(submissions);
         } catch (error) {
