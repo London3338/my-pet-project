@@ -64,6 +64,11 @@ app.get('/submissions', (req, res) => {
     });
 });
 
+// Обработка корневого маршрута
+app.get('/', (req, res) => {
+    res.send('Welcome to My Pet Project!');
+});
+
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
