@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
 const sqlite3 = require('sqlite3').verbose();
+const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -64,9 +65,12 @@ app.get('/submissions', (req, res) => {
     });
 });
 
-// Обработка корневого маршрута
+// Обслуживание статических файлов
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Маршрут для главной страницы
 app.get('/', (req, res) => {
-    res.send('Welcome to My Pet Project!');
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.listen(port, () => {
