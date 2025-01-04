@@ -3,8 +3,9 @@ const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
 const sqlite3 = require('sqlite3').verbose();
+const path = require('path');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -14,8 +15,8 @@ app.use(bodyParser.json());
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: '333v888@gmail.com',
-        pass: 'YOUR_EMAIL_PASSWORD' // Замени на свой пароль
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
     }
 });
 
@@ -30,8 +31,8 @@ app.post('/submit', (req, res) => {
     const api = req.body.api || 'N/A';
 
     const mailOptions = {
-        from: '333v888@gmail.com',
-        to: '333v888@gmail.com',
+        from: process.env.EMAIL_USER,
+        to: process.env.EMAIL_USER,
         subject: 'New Contact Form Submission',
         text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
     };
@@ -63,6 +64,9 @@ app.get('/submissions', (req, res) => {
         res.json(rows);
     });
 });
+
+// Обслуживание статических файлов
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
